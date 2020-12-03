@@ -1,0 +1,19 @@
+<h1>Edit Figure</h1>
+<form action="/figures/<%=@figure.id%>" method="POST">
+<input type="hidden" name="_method" value="PATCH">
+<input type = "text" name="figure[name]" id="figure_name" value="<%=@figure.name%>"><br>
+
+<%if @figure.titles != []%>
+<%@figure.titles.each do |title|%>
+<input type = "text" name="figure[title_ids][]" id="<%=title.name%>" value="<%=title.id%>"><br>
+<%end%><%end%>
+<input type="text" name="figure[title_ids][]" id="new_title"> <br>
+
+<%if @figure.landmarks != []%>
+<%@figure.landmarks.each do |landmark|%>
+<input type = "text" name="figure[landmark_ids][]" id="<%landmark.name%>" value="<%=landmark.id%>">
+<%end%><%end%>
+Landmark Name: <input type="text" name="landmark[name]" id="new_landmark"><br>
+    Year Completed: <input type="text" name="landmark[year_completed]" id="new_year_completed"><br>
+<input type = "submit" id="submit" value="Edit Figure">
+</form>
